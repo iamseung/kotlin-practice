@@ -9,4 +9,8 @@ class single {
     data class Person(val name: String) {
         var age: Int = 0
     }
+
+    fun A() {
+
+    }
 }

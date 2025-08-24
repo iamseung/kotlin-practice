@@ -26,6 +26,10 @@ class single {
 
     }
 
+    fun W() {
+
+    }
+
     fun Q() {
 
     }

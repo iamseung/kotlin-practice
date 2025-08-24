@@ -17,4 +17,8 @@ class single {
     fun B() {
 
     }
+
+    fun C() {
+
+    }
 }

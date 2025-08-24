@@ -25,4 +25,8 @@ class single {
     fun D() {
 
     }
+
+    fun W() {
+
+    }
 }

@@ -21,4 +21,8 @@ class single {
     fun C() {
 
     }
+
+    fun D() {
+
+    }
 }

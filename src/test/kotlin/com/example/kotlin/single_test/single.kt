@@ -17,12 +17,4 @@ class single {
     fun B() {
 
     }
-
-    fun C() {
-
-    }
-
-    fun D() {
-
-    }
 }

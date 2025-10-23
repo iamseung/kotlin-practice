@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8085:8080"
+      - "50000:50000"
+    environment:
+      TZ: "Asia/Seoul"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: "Asia/Seoul"
+      MYSQL_ROOT_PASSWORD: votmdnjem
+      MYSQL_DATABASE: eval
+      MYSQL_USER: seungseok
+      MYSQL_PASSWORD: votmdnjem
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      TZ: "Asia/Seoul"
+      POSTGRES_DB: eval
+      POSTGRES_USER: seungseok
+      POSTGRES_PASSWORD: votmdnjem
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
+  postgres_data:
+    driver: local
+  jenkins_home:
+    driver: local

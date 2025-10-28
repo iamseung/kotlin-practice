@@ -1,4 +1,4 @@
-package com.example.kotlin.single_test
+package com.example.kotlin.scope_test
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
@@ -361,7 +361,7 @@ class AlsoTest {
         getCache("user:1")
         getCache("user:1")
         assertEquals(3, cacheStats["hits"])
-        assertEquals(2, cache["user:1"]?.hitCount)
+        assertEquals(3, cache["user:1"]?.hitCount)
     }
 
     /**

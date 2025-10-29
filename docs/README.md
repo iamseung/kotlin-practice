@@ -17,13 +17,24 @@
 ### Sealed Class (봉인 클래스)
 제한된 클래스 계층 구조로 타입 안전성 보장
 
-- **[sealed-class.md](sealed/sealed-class.md)** - Sealed Class 완벽 가이드
+- **[sealed-class.md](./sealed-class.md)** - Sealed Class 완벽 가이드
   - Result 패턴
   - UI 상태 관리
   - 네트워크 응답 처리
   - 이벤트 시스템
   - Either 타입
   - 명령 패턴
+
+### Generics (제네릭)
+타입 파라미터를 사용한 재사용 가능한 코드
+
+- **[generics.md](generics/generics.md)** - Generics 완벽 가이드
+  - out T (공변성) 이해하기
+  - in T (반공변성) 이해하기
+  - Nothing 타입의 의미
+  - Result 패턴에서 제네릭 활용
+  - 타입 경계와 제약
+  - reified 타입 파라미터
 
 ## 🎯 빠른 참조
 
@@ -63,8 +74,18 @@
    - Result 패턴
    - UI 상태 관리
 
+4. **Generics 기초**
+   - 제네릭 타입 파라미터
+   - 기본 사용법
+
 ### 고급
-4. **Sealed Class 심화**
+5. **Generics 심화**
+   - out T (공변성)
+   - in T (반공변성)
+   - Nothing 타입
+
+6. **Sealed Class + Generics**
+   - Result<out T> 패턴
    - Either 타입
    - 재귀적 구조
    - 복잡한 상태 관리
@@ -136,11 +157,15 @@ when (val state = viewModel.state) {
 ### Sealed Class
 - `src/test/kotlin/com/example/kotlin/single_test/SealedClassTest.kt`
 
+### Generics
+- `src/test/kotlin/com/example/kotlin/single_test/GenericsTest.kt`
+
 ## 📚 추가 학습 자료
 
 - [Kotlin 공식 문서](https://kotlinlang.org/docs/home.html)
 - [Kotlin Scope Functions](https://kotlinlang.org/docs/scope-functions.html)
 - [Kotlin Sealed Classes](https://kotlinlang.org/docs/sealed-classes.html)
+- [Kotlin Generics](https://kotlinlang.org/docs/generics.html)
 
 ## 🎉 마무리
 

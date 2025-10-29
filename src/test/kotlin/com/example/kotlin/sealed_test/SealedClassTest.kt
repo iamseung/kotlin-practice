@@ -1,4 +1,4 @@
-package com.example.kotlin.single_test
+package com.example.kotlin.sealed_test
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*

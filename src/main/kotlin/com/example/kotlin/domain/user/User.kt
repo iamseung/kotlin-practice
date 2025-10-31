@@ -1,8 +1,8 @@
 package com.example.kotlin.domain.user
 
+import com.example.kotlin.domain.common.BaseEntity
 import jakarta.persistence.*
 import java.math.BigDecimal
-import java.time.LocalDateTime
 
 @Entity
 @Table(name = "users")
@@ -18,29 +18,19 @@ class User(
     val name: String,
 
     @Column(nullable = false, precision = 10, scale = 0)
-    var currentPoint: BigDecimal = BigDecimal.ZERO,
-
-    @Column(nullable = false)
-    val isActive: Boolean = true,
-
-    @Column(nullable = false)
-    val isDeleted: Boolean = false,
-
-    @Column(nullable = false, updatable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now(),
-
-    @Column(nullable = false)
-    var updatedAt: LocalDateTime = LocalDateTime.now()
-) {
+    var currentPoint: BigDecimal = BigDecimal.ZERO
+) : BaseEntity() {
     fun addPoint(amount: BigDecimal) {
         this.currentPoint = this.currentPoint.add(amount)
-        this.updatedAt = LocalDateTime.now()
+        // updatedAt는 JPA Auditing이 자동으로 업데이트
     }
 
     fun subtractPoint(amount: BigDecimal) {
-        require(this.currentPoint >= amount) { "포인트가 부족합니다. 현재: ${this.currentPoint}, 차감: $amount" }
+        require(this.currentPoint >= amount) {
+            "포인트가 부족합니다. 현재: ${this.currentPoint}, 차감: $amount"
+        }
         this.currentPoint = this.currentPoint.subtract(amount)
-        this.updatedAt = LocalDateTime.now()
+        // updatedAt는 JPA Auditing이 자동으로 업데이트
     }
 
     override fun toString(): String {

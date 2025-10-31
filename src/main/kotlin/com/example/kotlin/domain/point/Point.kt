@@ -1,9 +1,9 @@
 package com.example.kotlin.domain.point
 
+import com.example.kotlin.domain.common.BaseEntity
 import com.example.kotlin.domain.user.User
 import jakarta.persistence.*
 import java.math.BigDecimal
-import java.time.LocalDateTime
 
 @Entity
 @Table(name = "points")
@@ -24,17 +24,8 @@ class Point(
     val type: PointType,
 
     @Column(nullable = false, length = 200)
-    val reason: String,
-
-    @Column(nullable = false)
-    val isActive: Boolean = true,
-
-    @Column(nullable = false)
-    val isDeleted: Boolean = false,
-
-    @Column(nullable = false, updatable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
-) {
+    val reason: String
+) : BaseEntity() {
     override fun toString(): String {
         return "Point(id=$id, userId=${user.id}, amount=$amount, type=$type, reason='$reason', createdAt=$createdAt)"
     }

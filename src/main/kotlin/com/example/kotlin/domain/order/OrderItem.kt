@@ -1,10 +1,10 @@
 package com.example.kotlin.domain.order
 
+import com.example.kotlin.domain.common.BaseEntity
 import com.example.kotlin.domain.item.Item
 import com.example.kotlin.domain.item.ItemOption
 import jakarta.persistence.*
 import java.math.BigDecimal
-import java.time.LocalDateTime
 
 @Entity
 @Table(name = "order_items")
@@ -29,17 +29,8 @@ class OrderItem(
     val quantity: Int,
 
     @Column(nullable = false, precision = 10, scale = 0)
-    val price: BigDecimal,
-
-    @Column(nullable = false)
-    val isActive: Boolean = true,
-
-    @Column(nullable = false)
-    val isDeleted: Boolean = false,
-
-    @Column(nullable = false, updatable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now()
-) {
+    val price: BigDecimal
+) : BaseEntity() {
     fun getTotalPrice(): BigDecimal {
         return price.multiply(BigDecimal(quantity))
     }

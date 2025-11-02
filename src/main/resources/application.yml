@@ -5,10 +5,34 @@ spring:
     active: mysql  # default profile
 
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/kotlin_practice?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: root1234
+    # Master DataSource (쓰기 작업용)
+    master:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/kotlin_practice?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: root
+        password: root1234
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        maximum-pool-size: 10
+        minimum-idle: 5
+        connection-timeout: 30000
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        pool-name: MasterHikariPool
+
+    # Slave DataSource (읽기 작업용)
+    slave:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3307/kotlin_practice?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+        username: root
+        password: root1234
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        maximum-pool-size: 20  # 읽기가 많으므로 Master보다 크게 설정
+        minimum-idle: 10
+        connection-timeout: 30000
+        idle-timeout: 600000
+        max-lifetime: 1800000
+        pool-name: SlaveHikariPool
+        read-only: true  # Slave는 읽기 전용
 
   servlet:
     multipart:

@@ -1,16 +1,43 @@
 spring:
   application:
     name: kotlin
+  profiles:
+    active: mysql  # default profile
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kotlin_practice?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: root1234
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    open-in-view: false
+
+---
+# H2 Profile
+spring:
+  config:
+    activate:
+      on-profile: h2
+
   datasource:
     driver-class-name: org.h2.Driver
     url: "jdbc:h2:~/test"
     username: sa
     password: ""
 
-  servlet:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
   h2:
     console:
       enabled: true
@@ -25,6 +52,13 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
         show_sql: true
+
+---
+# MySQL Profile (Docker)
+spring:
+  config:
+    activate:
+      on-profile: mysql
 
 server:
   tomcat:

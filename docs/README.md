@@ -5,7 +5,7 @@
 ## 📚 문서 목록
 
 ### Scope Functions (스코프 함수)
-객체의 컨텍스트 내에서 코드를 실행하는 함수들
+객체의 컨텍스트 내에서 코드를 실행하는 함수들 
 
 - **[scope/README.md](./scope/README.md)** - Scope Functions 종합 가이드
 - **[scope/let.md](./scope/let.md)** - 값 변환 및 null 안전성

@@ -15,4 +15,14 @@ class SingleTest {
 
         // then
     }
+
+    @Test
+    fun `test`() {
+        // given
+        val value = mapOf("SS" to Person(name = "SS", age = 1))
+
+        // then
+    }
+
+    data class Person(val name: String, val age: Int)
 }

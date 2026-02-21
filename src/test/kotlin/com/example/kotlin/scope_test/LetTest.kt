@@ -59,6 +59,11 @@ class LetTest {
         val stock: Int?
     )
 
+    data class  Person(
+        val name: String,
+        val age: Int,
+    )
+
     /**
      * 예제 1: 기본 사용 - nullable 객체 처리
      */
@@ -626,5 +631,19 @@ class LetTest {
         assertNull(parseUserData("invalid"))
         assertNull(parseUserData("123|invalid-email"))
         assertNull(parseUserData("not-a-number|user@example.com|"))
+    }
+
+    @Test
+    fun `test`() {
+        val strings = listOf("APPLE", "CAR")
+        strings.map { it.length }
+            .filter { it > 3 }
+            .let(::println)
+
+        strings.map { it.length }
+            .filter { it > 3 }
+            .let { lengths -> println(lengths) }
+
+
     }
 }

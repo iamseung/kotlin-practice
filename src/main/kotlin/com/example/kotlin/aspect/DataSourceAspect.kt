@@ -36,7 +36,7 @@ class DataSourceAspect {
      *
      * @param joinPoint AOP JoinPoint
      * @return 메서드 실행 결과
-     * @throws Throwable 메서드 실행 중 발생한 예외
+     * @throws Throwable 메서드 실행 중 발생ㄹ한 예외
      */
     @Around("@annotation(com.example.kotlin.annotation.ForceMaster)")
     fun forceMaster(joinPoint: ProceedingJoinPoint): Any? {

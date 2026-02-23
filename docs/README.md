@@ -25,6 +25,11 @@
   - Either 타입
   - 명령 패턴
 
+### Interface vs Abstract Class (인터페이스 vs 추상 클래스)
+능력(계약)과 공통 베이스의 차이
+
+- **[interface-vs-abstract.md](./interface-vs-abstract.md)** - 핵심 차이 및 선택 기준
+
 ### Generics (제네릭)
 타입 파라미터를 사용한 재사용 가능한 코드
 

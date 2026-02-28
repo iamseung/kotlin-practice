@@ -7,7 +7,7 @@ class PersonTest {
     private val person = Person()
 
     @Test
-    fun iskimTets() {
+    fun isKimTets() {
         // given
         val person = Person().apply { name = "김수한무" }
 

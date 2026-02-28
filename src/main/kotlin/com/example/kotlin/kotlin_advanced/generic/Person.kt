@@ -54,3 +54,10 @@ class LazyInitProperty<T>(val init: () -> T) {
         return value
     }
 }
+
+class Person3 {
+    @Deprecated("age를 사용하세요!", ReplaceWith("age"))
+    var num: Int = 0
+
+    var age: Int by this::num
+}

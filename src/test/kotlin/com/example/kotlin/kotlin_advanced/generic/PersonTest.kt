@@ -1,7 +1,6 @@
 package com.example.kotlin.kotlin_advanced.generic
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class PersonTest {

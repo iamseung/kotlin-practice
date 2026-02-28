@@ -10,7 +10,7 @@ class PersonTest {
     @Test
     fun iskimTets() {
         // given
-        val person = Person("김수한무")
+        val person = Person().apply { name = "김수한무" }
 
         // when & then
         assertThat(person.isKim).isTrue()
@@ -19,7 +19,7 @@ class PersonTest {
     @Test
     fun maskingTest() {
         // given
-        val person = Person("김무")
+        val person = Person().apply { name = "김무" }
 
         // when & then
         assertThat(person.maskingName).isEqualTo("김***")

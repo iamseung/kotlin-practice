@@ -11,7 +11,7 @@ class Person{
 }
 
 class Person2 {
-    // backing property
+    // backing property !
     private var _name: String? = null
     val name: String
         get() {

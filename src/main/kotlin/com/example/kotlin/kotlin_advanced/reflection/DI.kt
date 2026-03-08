@@ -6,6 +6,8 @@ import kotlin.reflect.KFunction
 import kotlin.reflect.KParameter
 import kotlin.reflect.cast
 
+class DI
+
 object ContainerV1 {
     // 등록한 클래스 보관, KClass를 보관
     private val registeredClasses = mutableSetOf<KClass<*>>()
@@ -24,8 +26,21 @@ object ContainerV1 {
 }
 
 fun start(clazz: KClass<*>) {
+    val reflections = Reflections(clazz.packagedName)
+    val jClasses = reflections.getTypesAnnotatedWith(MyClass::class.java)
 
+    // jClass 는 자바 리플렉션 객체이기 때문에 .kotlin으로 코틀린 리플렉션 객체(kClass)로 변환
+    jClasses.forEach { jClass -> ContainerV2.register(jClass.kotlin) }
 }
+
+private val KClass<*>.packagedName: String
+    get() {
+        val qualifiedName = this.qualifiedName
+            ?: throw IllegalArgumentException("익명 객체입니다.")
+        val hierarchy = qualifiedName.split(".")
+        return hierarchy.subList(0, hierarchy.lastIndex).joinToString(".")
+    }
+
 object ContainerV2 {
     // 등록한 클래스 보관, KClass를 보관
     private val registeredClasses = mutableSetOf<KClass<*>>()
@@ -78,9 +93,13 @@ fun main() {
 //    val bService = ContainerV2.getInstance(BService::class)
 //    bService.print()
 
-    val reflections = Reflections("com.example.kotlin.kotlin_advanced.reflection")
-    val jClasses = reflections.getTypesAnnotatedWith(MyClass::class.java)
-    println(jClasses)
+//    val reflections = Reflections("com.example.kotlin.kotlin_advanced.reflection")
+//    val jClasses = reflections.getTypesAnnotatedWith(MyClass::class.java)
+//    println(jClasses)
+
+    start(DI::class)
+    val bService = ContainerV2.getInstance(BService::class)
+    bService.print()
 }
 
 annotation class MyClass

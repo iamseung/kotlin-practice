@@ -25,6 +25,10 @@ fun main() {
     println(yml.render("   "))
 }
 
+/*
+    DockerCompose.() -> Unit = "DockerCompose를 this로 가진 채로 실행되는 람다"
+    그래서 블록 { } 안에서 DockerCompose의 멤버에 this. 없이 바로 접근할 수 있는 것.
+ */
 fun dockerCompose(init: DockerCompose.() -> Unit): DockerCompose {
     val dockerCompose = DockerCompose()
     dockerCompose.init()

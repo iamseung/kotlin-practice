@@ -6,6 +6,7 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.9.25' // for kotlin jpa (allopen)
     id 'org.jetbrains.kotlin.kapt' version '1.9.25'       // ★ Q클래스 생성용
     id "me.champeau.jmh" version "0.7.0"
+    id 'org.jetbrains.dokka' version '1.8.10'
 }
 
 group = 'com.example'
